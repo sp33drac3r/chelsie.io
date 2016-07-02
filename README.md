@@ -1,2 +1,2 @@
-# chelsie_backend
-Rails backend for chelsie frontend
+
+# chelsie_io
