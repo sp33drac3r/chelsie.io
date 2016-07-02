@@ -1,3 +1,13 @@
+# run rake on heroku
+# heroku run rake db:migrate
+
+# reset pg database
+# heroku pg:reset DATABASE_URL
+
+# push local database to heroku
+# heroku pg:push chelsie_development DATABASE_URL --a whispering-basin-94887
+
+
 # lib/tasks/db.rake
 namespace :db do
 
