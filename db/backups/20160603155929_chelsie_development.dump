@@ -1,0 +1,358 @@
+--
+-- PostgreSQL database dump
+--
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner:
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner:
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: apprentice; Tablespace:
+--
+
+CREATE TABLE schema_migrations (
+    version character varying NOT NULL
+);
+
+
+ALTER TABLE schema_migrations OWNER TO apprentice;
+
+--
+-- Name: service_providers; Type: TABLE; Schema: public; Owner: apprentice; Tablespace:
+--
+
+CREATE TABLE service_providers (
+    id integer NOT NULL,
+    name character varying NOT NULL,
+    address character varying NOT NULL,
+    lat numeric,
+    lng numeric,
+    place_id character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE service_providers OWNER TO apprentice;
+
+--
+-- Name: service_providers_id_seq; Type: SEQUENCE; Schema: public; Owner: apprentice
+--
+
+CREATE SEQUENCE service_providers_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE service_providers_id_seq OWNER TO apprentice;
+
+--
+-- Name: service_providers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: apprentice
+--
+
+ALTER SEQUENCE service_providers_id_seq OWNED BY service_providers.id;
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: apprentice
+--
+
+ALTER TABLE ONLY service_providers ALTER COLUMN id SET DEFAULT nextval('service_providers_id_seq'::regclass);
+
+
+--
+-- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: apprentice
+--
+
+COPY schema_migrations (version) FROM stdin;
+20160603014136
+\.
+
+
+--
+-- Data for Name: service_providers; Type: TABLE DATA; Schema: public; Owner: apprentice
+--
+
+COPY service_providers (id, name, address, lat, lng, place_id, created_at, updated_at) FROM stdin;
+1	Bellevue Hospital Center's Rape Crisis Program	462 1st Avenue, New York, NY 10016, USA	40.7392212	-73.9755369	ChIJ-zShJAxZwokRL7Xrf61gdjo	2016-06-03 18:24:01.691793	2016-06-03 18:24:01.691793
+2	Rape Hot Line	1015 Wilshire Blvd #200, Los Angeles, CA 90017, United States	34.0518071	-118.261786	ChIJ2T0MybfHwoARHs_FjaEozEg	2016-06-03 18:24:02.567124	2016-06-03 18:24:02.567124
+3	Santa Monica-UCLA Medical Center - Rape Treatment Center	1250 16th St, Santa Monica, CA 90404, United States	34.0271164	-118.4866344	ChIJI6fFUjW7woAR6bNA5cq9Ro0	2016-06-03 18:24:02.570465	2016-06-03 18:24:02.570465
+4	East Los Angeles Women's Center	1255 S Atlantic Blvd, Los Angeles, CA 90022, United States	34.0147452	-118.1593015	ChIJXfShgQfPwoAR2uiaxaWDsDE	2016-06-03 18:24:02.57301	2016-06-03 18:24:02.57301
+5	Rape Foundation	1223 Wilshire Blvd # 410, Santa Monica, CA 90403, United States	34.0259696	-118.4902865	ChIJIVmsb8qkwoARUv05TLPGa2I	2016-06-03 18:24:02.575282	2016-06-03 18:24:02.575282
+6	Sexual Assault Crisis Program	1600 E Compton Blvd, Compton, CA 90221, United States	33.8958157	-118.205471	ChIJvQ_KLp7MwoARqRgyMXM4lkQ	2016-06-03 18:24:02.580021	2016-06-03 18:24:02.580021
+7	Valley Trauma Center	7116 Sophia Ave, Van Nuys, CA 91406, United States	34.1997717	-118.4865873	ChIJN3M8nOKZwoARExwakiyXUhA	2016-06-03 18:24:02.582865	2016-06-03 18:24:02.582865
+8	Just Detention International	3325 Wilshire Blvd # 340, Los Angeles, CA 90010, United States	34.0621685	-118.2949585	ChIJ6RJlZ3zHwoARU3MIDtQLQ0E	2016-06-03 18:24:02.585386	2016-06-03 18:24:02.585386
+9	Peace Over Violence	Santa Monica, CA 90405, United States	34.009746	-118.4659576	ChIJAQAAAN-6woARr-ci-6OvgMI	2016-06-03 18:24:02.587917	2016-06-03 18:24:02.587917
+10	Project Sister Rape Crisis Center	Pomona, CA 91769, United States	34.0870296	-117.8868171	ChIJAQAAAFsow4AR3GBk_l4zHVE	2016-06-03 18:24:02.590695	2016-06-03 18:24:02.590695
+11	Sexual Assault Victim Services	700 W Civic Center Dr, Santa Ana, CA 92701, United States	33.7510317	-117.8753841	ChIJCSJJrKvZ3IAR6_VrtkUBPfo	2016-06-03 18:24:02.593166	2016-06-03 18:24:02.593166
+12	Rape Victim Advocates	180 N Michigan Ave #600, Chicago, IL 60601, United States	41.88557	-87.624783	ChIJEcn5Xa8sDogRkAT8yrtXqY0	2016-06-03 18:24:03.515617	2016-06-03 18:24:03.515617
+13	Houston Area Women's Center	1010 Waugh Dr, Houston, TX 77019, United States	29.7571081	-95.3985505	ChIJd4k7hqbAQIYRoeU0ZrI8TFU	2016-06-03 18:24:04.725031	2016-06-03 18:24:04.725031
+14	Women Organized Against Rape	1617 John F Kennedy Blvd #1100, Philadelphia, PA 19103, United States	39.954085	-75.167459	ChIJH36T7THGxokRl1XDmfphE6c	2016-06-03 18:24:05.437138	2016-06-03 18:24:05.437138
+15	Victim Services Center	2, 325 Swede St, Norristown, PA 19401, United States	40.1153303	-75.344417	ChIJdW_rUxyWxokROGTuD15BNw4	2016-06-03 18:24:05.440404	2016-06-03 18:24:05.440404
+16	Rape Crisis Services	1600 N Country Club Rd, Tucson, AZ 85716, United States	32.241772	-110.926154	ChIJOQ3f_Mdx1oYRas97cyiTn9c	2016-06-03 18:24:06.230162	2016-06-03 18:24:06.230162
+17	The Rape Crisis Center	7500 W US Hwy 90, San Antonio, TX 78227, United States	29.398463	-98.635997	ChIJG2jfH2pbXIYRXHiWsNXcEOc	2016-06-03 18:24:07.021937	2016-06-03 18:24:07.021937
+18	The Rape Crisis Center	7500 W US Hwy 90, San Antonio, TX 78227, United States	29.398463	-98.635997	ChIJG2jfH2pbXIYRXHiWsNXcEOc	2016-06-03 18:24:07.841288	2016-06-03 18:24:07.841288
+19	Rape Crisis Center of Milford Inc	70 W River St, Milford, CT 06460, United States	41.225927	-73.0598231	ChIJi-evZpR06IkRUj2rLpUqZTw	2016-06-03 18:24:07.844326	2016-06-03 18:24:07.844326
+20	Boston Area Rape Crisis Center	99 Bishop Allen Dr, Cambridge, MA 02139, United States	42.3658537	-71.1020181	ChIJ4zlpwlN344kRc7JP-joc0bM	2016-06-03 18:24:07.846752	2016-06-03 18:24:07.846752
+21	Bluegrass Rape Crisis Center	145 Constitution St, Lexington, KY 40588, United States	38.0477675	-84.492479	ChIJm0byQe1EQogRgZHnHpmiNX4	2016-06-03 18:24:07.849137	2016-06-03 18:24:07.849137
+22	Rape Crisis Center	2801 Coho St #301, Madison, WI 53713, United States	43.032404	-89.414413	ChIJ3wNT2EOtB4gRXDc9SPpXkNk	2016-06-03 18:24:07.851336	2016-06-03 18:24:07.851336
+23	Rape Crisis Center of Riverside	1845 Chicago Ave # A, Riverside, CA 92507, United States	33.9943271	-117.3502605	ChIJ8_g3vwiu3IARQhWyBGrNcVE	2016-06-03 18:24:07.853647	2016-06-03 18:24:07.853647
+24	North County Rape Crisis Center	511 E Ocean Ave, Lompoc, CA 93436, United States	34.639185	-120.45219	ChIJj4kvaJEe7IAR4XoQwHdGLqA	2016-06-03 18:24:07.856366	2016-06-03 18:24:07.856366
+25	D C Rape Crisis Center	5321 1st Pl NE, Washington, DC 20011, United States	38.9550885	-77.0040937	ChIJCyil7L63t4kRz5Y0DWFor3I	2016-06-03 18:24:07.858766	2016-06-03 18:24:07.858766
+26	Rape Crisis Center of Central Nm	9741 Candelaria Rd NE, Albuquerque, NM 87112, United States	35.1173681	-106.5307911	ChIJlWKQY_-fGIcRvloEYaavSZU	2016-06-03 18:24:07.861009	2016-06-03 18:24:07.861009
+27	Rape Crisis Center	PO Box 91068, Mobile, AL 36691, United States	30.63	-88.15	ChIJ5wINdcBMmogRWbZuWr3nMD4	2016-06-03 18:24:07.863439	2016-06-03 18:24:07.863439
+28	Cleveland Rape Crisis Center	1228 Euclid Ave #200, Cleveland, OH 44115, United States	41.5002762	-81.6839155	ChIJKV4ajn36MIgRByEmCm7rKqc	2016-06-03 18:24:07.865848	2016-06-03 18:24:07.865848
+29	Safe Place & Rape Crisis Center	2139 Main St, Sarasota, FL 34237, United States	27.3366705	-82.527582	ChIJ9W5fPGVAw4gREw7sMi8ysik	2016-06-03 18:24:07.868027	2016-06-03 18:24:07.868027
+30	YWCA North Shore Rape Crisis Center	20 Central Ave Suite 510, Lynn, MA 01901, United States	42.4639207	-70.9458526	ChIJKVYnB-ds44kRblB9nKZ4mio	2016-06-03 18:24:07.870155	2016-06-03 18:24:07.870155
+31	California Coalition Against Sexual Assault (CALCASA)	1215 K St #1850, Sacramento, CA 95814, United States	38.578475	-121.489886	ChIJWfgCutfQmoARTl_Sk8hNFA0	2016-06-03 18:24:07.872274	2016-06-03 18:24:07.872274
+32	Orange County Rape Crisis Center	1506 E Franklin St #302, Chapel Hill, NC 27514, United States	35.929967	-79.0326	ChIJAW1XrrPCrIkRn_I2aamXPzI	2016-06-03 18:24:07.876068	2016-06-03 18:24:07.876068
+33	Bellevue Hospital Center's Rape Crisis Program	462 1st Avenue, New York, NY 10016, United States	40.7392212	-73.9755369	ChIJ-zShJAxZwokRL7Xrf61gdjo	2016-06-03 18:24:07.878755	2016-06-03 18:24:07.878755
+34	Child Protection & Rape Crisis	301 Miller St # 103, Santa Maria, CA 93454, United States	34.9505209	-120.4317856	ChIJnzZL64Bs7IARX3IeRiE37Ug	2016-06-03 18:24:07.880981	2016-06-03 18:24:07.880981
+35	The Center for Hope and Healing, Inc.	144 Merrimack St #304, Lowell, MA 01852, United States	42.6454605	-71.3101826	ChIJK9zxRT-k44kRiIfMZ2vQi2A	2016-06-03 18:24:07.883237	2016-06-03 18:24:07.883237
+36	Turning Point	PO Box 866754, Plano, TX 75086, United States	33.02	-96.7	ChIJVdSjnxsZTIYRym2SA8ZMipU	2016-06-03 18:24:07.88543	2016-06-03 18:24:07.88543
+37	Rape Victim Advocates	180 N Michigan Ave #600, Chicago, IL 60601, United States	41.88557	-87.624783	ChIJEcn5Xa8sDogRkAT8yrtXqY0	2016-06-03 18:24:07.887704	2016-06-03 18:24:07.887704
+38	Dallas Area Rape Crisis Center	8198 Walnut Hill Ln, Dallas, TX 75231, United States	32.8800172	-96.7641223	ChIJyRFcYlAfTIYRM3LHzhcQ6fs	2016-06-03 18:24:08.678382	2016-06-03 18:24:08.678382
+39	Rape Crisis & Referral Center	375 S 3rd St, San Jose, CA 95112, United States	37.3314888	-121.8845554	ChIJV7oX_LnMj4AR9TPNXDX0EHo	2016-06-03 18:24:09.452771	2016-06-03 18:24:09.452771
+40	Texas Association Against Sexual Assault	6200 La Calma Dr # 110, Austin, TX 78752, United States	30.3236534	-97.7034046	ChIJVcEHUx_KRIYR0Xag2Yj4jRM	2016-06-03 18:24:10.27798	2016-06-03 18:24:10.27798
+41	Women's Center of Jacksonville	5644 Colcord Ave, Jacksonville, FL 32211, United States	30.326385	-81.6037739	ChIJ7x1B45-25YgRHcSCKMYjxC4	2016-06-03 18:24:11.061849	2016-06-03 18:24:11.061849
+42	Rape Crisis Center	1841 Market St, San Francisco, CA 94103, United States	37.770971	-122.424237	ChIJHWreAaCAhYARiGWGkCQ_m0U	2016-06-03 18:24:11.949567	2016-06-03 18:24:11.949567
+43	S F Women Against Rape	3543 18th St #7, San Francisco, CA 94110, United States	37.7613718	-122.4225598	ChIJ6Z-syiJ-j4AReSXeTsrFDZo	2016-06-03 18:24:11.953119	2016-06-03 18:24:11.953119
+44	Rape Treatment Center	2727 Mariposa St # 100, San Francisco, CA 94110, United States	37.7628783	-122.4103893	ChIJKRaQ-DB-j4ARgEwlHi7uICM	2016-06-03 18:24:11.956568	2016-06-03 18:24:11.956568
+45	Bay Area Women Against Rape	470 27th St, Oakland, CA 94612, United States	37.8164725	-122.2665193	ChIJ95dTIauAj4ARj4yrvP6-WpM	2016-06-03 18:24:11.959342	2016-06-03 18:24:11.959342
+46	Rape Trauma Services of San Mateo	1860 El Camino Real # 301, Burlingame, CA 94010, United States	37.5963061	-122.384258	ChIJ6aYOB7R3j4AReFutdAMPvG0	2016-06-03 18:24:11.961963	2016-06-03 18:24:11.961963
+47	Rape Trauma Services	1860 El Camino Real #406, Burlingame, CA 94010, United States	37.59631	-122.384434	ChIJQT-i-bN3j4ARVzpft-tvXFI	2016-06-03 18:24:11.965229	2016-06-03 18:24:11.965229
+48	Center of Hope at St. Francis Hospital	8111 S Emerson Ave, Indianapolis, IN 46237, United States	39.6484238	-86.0800603	ChIJpVS2FEdDa4gRZzXe4pbrAYI	2016-06-03 18:24:12.960397	2016-06-03 18:24:12.960397
+49	Sexual Assault Response Network	1299 Olentangy River Rd, Columbus, OH 43212, United States	39.9863169	-83.0254846	ChIJkeiQrPqOOIgRhWpo8Bibc2Q	2016-06-03 18:24:13.756051	2016-06-03 18:24:13.756051
+50	The Women's Center	1723 Hemphill St, Fort Worth, TX 76110, United States	32.7243182	-97.3312214	ChIJyxCfQJ9xToYRlW-c34PRySo	2016-06-03 18:24:14.540126	2016-06-03 18:24:14.540126
+51	Rape Crisis & Victim Services	1723 Hemphill St, Fort Worth, TX 76110, United States	32.724416	-97.331108	ChIJyxCfQJ9xToYRzO__iESpXV4	2016-06-03 18:24:14.542993	2016-06-03 18:24:14.542993
+52	Women's Center-Tarrant County	401 W Sanford St # 1200, Arlington, TX 76011, United States	32.7432039	-97.1124441	ChIJU1DSx599ToYRirnoiRHU98k	2016-06-03 18:24:14.545339	2016-06-03 18:24:14.545339
+53	Dallas Area Rape Crisis Center	8198 Walnut Hill Ln, Dallas, TX 75231, United States	32.8800172	-96.7641223	ChIJyRFcYlAfTIYRM3LHzhcQ6fs	2016-06-03 18:24:14.547584	2016-06-03 18:24:14.547584
+54	Victim Intervention Program/Rape Crisis Center	5201 Harry Hines Blvd, Dallas, TX 75235, United States	32.8106657	-96.8382974	ChIJR5a906meToYRm8Pkprek-hU	2016-06-03 18:24:14.549869	2016-06-03 18:24:14.549869
+55	United Family Services: Rape Crisis Hotline	601 E 5th St, Charlotte, NC 28202, United States	35.2236029	-80.8363191	ChIJZREWXiGgVogRjuYrE4Y3dpA	2016-06-03 18:24:15.447529	2016-06-03 18:24:15.447529
+56	Rebuilding Hope, the Sexual Assault Center of Pierce County	101 E 26th St #200, Tacoma, WA 98421, United States	47.2383421	-122.433436	ChIJYZMcjntVkFQR3sW7AEVqspw	2016-06-03 18:24:16.195276	2016-06-03 18:24:16.195276
+57	Colorado Coalition Against Sexual Assault	1120 Lincoln St #700, Denver, CO 80203, United States	39.7345321	-104.9856934	ChIJC8LRjzJ5bIcRdlpRqvRIE0w	2016-06-03 18:24:17.03018	2016-06-03 18:24:17.03018
+58	Rape Crisis Hotline	Denver, CO 80206, United States	39.7271021	-104.9564084	ChIJUcfsmQF8bIcRKG7FqOZOyZU	2016-06-03 18:24:17.034484	2016-06-03 18:24:17.034484
+59	Stars	710 N Campbell St, El Paso, TX 79902, United States	31.7645999	-106.4880003	ChIJ54YO1_9Y54YRaikaHzHqJEM	2016-06-03 18:24:17.808984	2016-06-03 18:24:17.808984
+60	The Rape Crisis Center	7500 W US Hwy 90, San Antonio, TX 78227, United States	29.398463	-98.635997	ChIJG2jfH2pbXIYRXHiWsNXcEOc	2016-06-03 18:24:18.5667	2016-06-03 18:24:18.5667
+61	Boston Area Rape Crisis Center	99 Bishop Allen Dr, Cambridge, MA 02139, United States	42.3658537	-71.1020181	ChIJ4zlpwlN344kRc7JP-joc0bM	2016-06-03 18:24:18.570088	2016-06-03 18:24:18.570088
+62	Rape Victim Advocates	180 N Michigan Ave #600, Chicago, IL 60601, United States	41.88557	-87.624783	ChIJEcn5Xa8sDogRkAT8yrtXqY0	2016-06-03 18:24:18.572642	2016-06-03 18:24:18.572642
+63	D C Rape Crisis Center	5321 1st Pl NE, Washington, DC 20011, United States	38.9550885	-77.0040937	ChIJCyil7L63t4kRz5Y0DWFor3I	2016-06-03 18:24:19.321294	2016-06-03 18:24:19.321294
+64	Boston Area Rape Crisis Center	99 Bishop Allen Dr, Cambridge, MA 02139, United States	42.3658537	-71.1020181	ChIJ4zlpwlN344kRc7JP-joc0bM	2016-06-03 18:24:20.230727	2016-06-03 18:24:20.230727
+65	Shelby County Rape Crisis Center	1750 Madison Ave #102, Memphis, TN 38104, United States	35.1382581	-90.0027645	ChIJh4gbuot-1YcRMbqSDthfBZE	2016-06-03 18:24:20.986287	2016-06-03 18:24:20.986287
+66	Sexual Assault Center	101 French Landing Dr, Nashville, TN 37228, United States	36.1890738	-86.7963501	ChIJoSAtuBBnZIgRJqXIPK73LGk	2016-06-03 18:24:21.748539	2016-06-03 18:24:21.748539
+67	The Rape Crisis Center	7500 W US Hwy 90, San Antonio, TX 78227, United States	29.398463	-98.635997	ChIJG2jfH2pbXIYRXHiWsNXcEOc	2016-06-03 18:24:22.501062	2016-06-03 18:24:22.501062
+68	Rape Recovery Center	2035 1300 E, Salt Lake City, UT 84105, United States	40.7263522	-111.8535159	ChIJHVwlhB5gUocRCf6cNzWNSBM	2016-06-03 18:24:22.504787	2016-06-03 18:24:22.504787
+69	Rape Victim Advocates	180 N Michigan Ave #600, Chicago, IL 60601, United States	41.88557	-87.624783	ChIJEcn5Xa8sDogRkAT8yrtXqY0	2016-06-03 18:24:22.507578	2016-06-03 18:24:22.507578
+70	Sexual Assault Resource Center	PO Box 3082, Bryan, TX 77805, United States	30.671701	-96.3438274	ChIJRw9qUgR-RoYRdd2TsY2AGeA	2016-06-03 18:24:22.509947	2016-06-03 18:24:22.509947
+71	Rape Abuse Incest National Network	1220 L St NW #505, Washington, DC 20005, United States	38.90341	-77.0292053	ChIJ22qUaLe3t4kRpOLf-nU0GTo	2016-06-03 18:24:22.513023	2016-06-03 18:24:22.513023
+72	Sexual Assault Support Services: Crisis/Support Line	591 W 19th Ave, Eugene, OR 97401, United States	44.0391728	-123.1010611	ChIJQ7gDi1wewVQRIuWq3stjq3Q	2016-06-03 18:24:22.515389	2016-06-03 18:24:22.515389
+73	Rape Crisis Line	Oklahoma City, OK 73112, United States	35.5135639	-97.5788975	ChIJmfLOg3AasocR9dn5ID3UC6M	2016-06-03 18:24:23.314294	2016-06-03 18:24:23.314294
+74	Oklahoma Coalition Against Domestic Violence and Sexual Assault	3815 N Santa Fe Ave, Oklahoma City, OK 73118, United States	35.5090283	-97.5124775	ChIJ-45CAeMZsocRuOQYLFffgq0	2016-06-03 18:24:23.321556	2016-06-03 18:24:23.321556
+75	Rape Crisis Center	801 S Rancho Dr #2, Las Vegas, NV 89106, United States	36.1621507	-115.1722555	ChIJ859dnR7ByIARDdKmA-DQaac	2016-06-03 18:24:24.112612	2016-06-03 18:24:24.112612
+76	Bellevue Hospital Center's Rape Crisis Program	462 1st Avenue, New York, NY 10016, United States	40.7392212	-73.9755369	ChIJ-zShJAxZwokRL7Xrf61gdjo	2016-06-03 18:25:25.012732	2016-06-03 18:25:25.012732
+77	Hudson County Rape Crisis Center	179 Palisade Ave, Jersey City, NJ 07306, United States	40.7352271	-74.0501945	ChIJYQKOWkhXwokRJrgS_v9SqAw	2016-06-03 18:25:25.043923	2016-06-03 18:25:25.043923
+78	Rape & Sexual Assault Hotline	2 Lafayette St, New York, NY 10007, United States	40.7139813	-74.0036721	ChIJg2oLhCFawokROfpwx8DEmjo	2016-06-03 18:25:25.047657	2016-06-03 18:25:25.047657
+79	NYC Alliance Against Sexual Assault	32 Broadway, New York, NY 10004, United States	40.7058616	-74.012811	ChIJm-AHRhFawokRgGOsJ3yS7yc	2016-06-03 18:25:25.050555	2016-06-03 18:25:25.050555
+80	Ashley Warner, LCSW	85 5th Ave #934, New York, NY 10003, United States	40.7372714	-73.9922583	ChIJmfCkiKJZwokRB1yxxgQwZ70	2016-06-03 18:25:25.053305	2016-06-03 18:25:25.053305
+81	Queens Rape Counseling Center	7149 Loubet St, Flushing, NY 11375, United States	40.7121098	-73.8476942	ChIJI2EDtR5ewokR4zBzMNtP0As	2016-06-03 18:25:25.05575	2016-06-03 18:25:25.05575
+82	Safe Horizon Agency Inc	51 Stuyvesant Pl, Staten Island, NY 10301, United States	40.6448855	-74.0782172	ChIJS8hYoCxOwokRYsVgQafVvf0	2016-06-03 18:25:25.05812	2016-06-03 18:25:25.05812
+83	YWCA Rape Crisis Hotline	2 University Plaza Dr # 208, Hackensack, NJ 07601, United States	40.8986	-74.0337	ChIJI5Psmwv6wokR2snYeQuuo9U	2016-06-03 18:25:25.06085	2016-06-03 18:25:25.06085
+84	Union County Rape Crisis Center	300 N Ave E, Westfield, NJ 07090, United States	40.6506893	-74.3428176	ChIJz7wa8qaxw4kRVBPhm8zgno0	2016-06-03 18:25:25.063805	2016-06-03 18:25:25.063805
+85	Rape Hot Line	1015 Wilshire Blvd #200, Los Angeles, CA 90017, United States	34.0518071	-118.261786	ChIJ2T0MybfHwoARHs_FjaEozEg	2016-06-03 18:25:25.743164	2016-06-03 18:25:25.743164
+86	Santa Monica-UCLA Medical Center - Rape Treatment Center	1250 16th St, Santa Monica, CA 90404, United States	34.0271164	-118.4866344	ChIJI6fFUjW7woAR6bNA5cq9Ro0	2016-06-03 18:25:25.746426	2016-06-03 18:25:25.746426
+87	East Los Angeles Women's Center	1255 S Atlantic Blvd, Los Angeles, CA 90022, United States	34.0147452	-118.1593015	ChIJXfShgQfPwoAR2uiaxaWDsDE	2016-06-03 18:25:25.749066	2016-06-03 18:25:25.749066
+88	Rape Foundation	1223 Wilshire Blvd # 410, Santa Monica, CA 90403, United States	34.0259696	-118.4902865	ChIJIVmsb8qkwoARUv05TLPGa2I	2016-06-03 18:25:25.751616	2016-06-03 18:25:25.751616
+89	Sexual Assault Crisis Program	1600 E Compton Blvd, Compton, CA 90221, United States	33.8958157	-118.205471	ChIJvQ_KLp7MwoARqRgyMXM4lkQ	2016-06-03 18:25:25.755402	2016-06-03 18:25:25.755402
+90	Valley Trauma Center	7116 Sophia Ave, Van Nuys, CA 91406, United States	34.1997717	-118.4865873	ChIJN3M8nOKZwoARExwakiyXUhA	2016-06-03 18:25:25.75835	2016-06-03 18:25:25.75835
+91	Just Detention International	3325 Wilshire Blvd # 340, Los Angeles, CA 90010, United States	34.0621685	-118.2949585	ChIJ6RJlZ3zHwoARU3MIDtQLQ0E	2016-06-03 18:25:25.761158	2016-06-03 18:25:25.761158
+92	Peace Over Violence	Santa Monica, CA 90405, United States	34.009746	-118.4659576	ChIJAQAAAN-6woARr-ci-6OvgMI	2016-06-03 18:25:25.763618	2016-06-03 18:25:25.763618
+93	Project Sister Rape Crisis Center	Pomona, CA 91769, United States	34.0870296	-117.8868171	ChIJAQAAAFsow4AR3GBk_l4zHVE	2016-06-03 18:25:25.765906	2016-06-03 18:25:25.765906
+94	Sexual Assault Victim Services	700 W Civic Center Dr, Santa Ana, CA 92701, United States	33.7510317	-117.8753841	ChIJCSJJrKvZ3IAR6_VrtkUBPfo	2016-06-03 18:25:25.768119	2016-06-03 18:25:25.768119
+95	Rape Victim Advocates	180 N Michigan Ave #600, Chicago, IL 60601, United States	41.88557	-87.624783	ChIJEcn5Xa8sDogRkAT8yrtXqY0	2016-06-03 18:25:26.378702	2016-06-03 18:25:26.378702
+96	Houston Area Women's Center	1010 Waugh Dr, Houston, TX 77019, United States	29.7571081	-95.3985505	ChIJd4k7hqbAQIYRoeU0ZrI8TFU	2016-06-03 18:25:27.157232	2016-06-03 18:25:27.157232
+97	Women Organized Against Rape	1617 John F Kennedy Blvd #1100, Philadelphia, PA 19103, United States	39.954085	-75.167459	ChIJH36T7THGxokRl1XDmfphE6c	2016-06-03 18:25:27.744887	2016-06-03 18:25:27.744887
+98	Victim Services Center	2, 325 Swede St, Norristown, PA 19401, United States	40.1153303	-75.344417	ChIJdW_rUxyWxokROGTuD15BNw4	2016-06-03 18:25:27.748353	2016-06-03 18:25:27.748353
+99	Rape Crisis Services	1600 N Country Club Rd, Tucson, AZ 85716, United States	32.241772	-110.926154	ChIJOQ3f_Mdx1oYRas97cyiTn9c	2016-06-03 18:25:28.468261	2016-06-03 18:25:28.468261
+100	The Rape Crisis Center	7500 W US Hwy 90, San Antonio, TX 78227, United States	29.398463	-98.635997	ChIJG2jfH2pbXIYRXHiWsNXcEOc	2016-06-03 18:25:29.148875	2016-06-03 18:25:29.148875
+101	The Rape Crisis Center	7500 W US Hwy 90, San Antonio, TX 78227, United States	29.398463	-98.635997	ChIJG2jfH2pbXIYRXHiWsNXcEOc	2016-06-03 18:25:30.061634	2016-06-03 18:25:30.061634
+102	Rape Crisis Center of Milford Inc	70 W River St, Milford, CT 06460, United States	41.225927	-73.0598231	ChIJi-evZpR06IkRUj2rLpUqZTw	2016-06-03 18:25:30.064459	2016-06-03 18:25:30.064459
+103	Rape Crisis Center	433 E Canon Perdido St, Santa Barbara, CA 93101, United States	34.4257197	-119.6953206	ChIJGRJzEoAT6YARHz3hk8N3aUw	2016-06-03 18:25:30.066772	2016-06-03 18:25:30.066772
+104	Boston Area Rape Crisis Center	99 Bishop Allen Dr, Cambridge, MA 02139, United States	42.3658537	-71.1020181	ChIJ4zlpwlN344kRc7JP-joc0bM	2016-06-03 18:25:30.06886	2016-06-03 18:25:30.06886
+105	Bluegrass Rape Crisis Center	145 Constitution St, Lexington, KY 40588, United States	38.0477675	-84.492479	ChIJm0byQe1EQogRgZHnHpmiNX4	2016-06-03 18:25:30.07094	2016-06-03 18:25:30.07094
+106	Rape Crisis Center	2801 Coho St #301, Madison, WI 53713, United States	43.032404	-89.414413	ChIJ3wNT2EOtB4gRXDc9SPpXkNk	2016-06-03 18:25:30.074189	2016-06-03 18:25:30.074189
+107	Rape Crisis Center of Riverside	1845 Chicago Ave # A, Riverside, CA 92507, United States	33.9943271	-117.3502605	ChIJ8_g3vwiu3IARQhWyBGrNcVE	2016-06-03 18:25:30.076563	2016-06-03 18:25:30.076563
+108	North County Rape Crisis Center	511 E Ocean Ave, Lompoc, CA 93436, United States	34.639185	-120.45219	ChIJj4kvaJEe7IAR4XoQwHdGLqA	2016-06-03 18:25:30.078869	2016-06-03 18:25:30.078869
+109	D C Rape Crisis Center	5321 1st Pl NE, Washington, DC 20011, United States	38.9550885	-77.0040937	ChIJCyil7L63t4kRz5Y0DWFor3I	2016-06-03 18:25:30.081224	2016-06-03 18:25:30.081224
+110	Rape Crisis Center of Central Nm	9741 Candelaria Rd NE, Albuquerque, NM 87112, United States	35.1173681	-106.5307911	ChIJlWKQY_-fGIcRvloEYaavSZU	2016-06-03 18:25:30.083356	2016-06-03 18:25:30.083356
+111	Rape Crisis Center	PO Box 91068, Mobile, AL 36691, United States	30.63	-88.15	ChIJ5wINdcBMmogRWbZuWr3nMD4	2016-06-03 18:25:30.085411	2016-06-03 18:25:30.085411
+112	Cleveland Rape Crisis Center	1228 Euclid Ave #200, Cleveland, OH 44115, United States	41.5002762	-81.6839155	ChIJKV4ajn36MIgRByEmCm7rKqc	2016-06-03 18:25:30.08757	2016-06-03 18:25:30.08757
+113	Safe Place & Rape Crisis Center	2139 Main St, Sarasota, FL 34237, United States	27.3366705	-82.527582	ChIJ9W5fPGVAw4gREw7sMi8ysik	2016-06-03 18:25:30.089719	2016-06-03 18:25:30.089719
+114	YWCA North Shore Rape Crisis Center	20 Central Ave Suite 510, Lynn, MA 01901, United States	42.4639207	-70.9458526	ChIJKVYnB-ds44kRblB9nKZ4mio	2016-06-03 18:25:30.091963	2016-06-03 18:25:30.091963
+115	California Coalition Against Sexual Assault (CALCASA)	1215 K St #1850, Sacramento, CA 95814, United States	38.578475	-121.489886	ChIJWfgCutfQmoARTl_Sk8hNFA0	2016-06-03 18:25:30.094286	2016-06-03 18:25:30.094286
+116	Orange County Rape Crisis Center	1506 E Franklin St #302, Chapel Hill, NC 27514, United States	35.929967	-79.0326	ChIJAW1XrrPCrIkRn_I2aamXPzI	2016-06-03 18:25:30.096517	2016-06-03 18:25:30.096517
+117	Bellevue Hospital Center's Rape Crisis Program	462 1st Avenue, New York, NY 10016, United States	40.7392212	-73.9755369	ChIJ-zShJAxZwokRL7Xrf61gdjo	2016-06-03 18:25:30.098732	2016-06-03 18:25:30.098732
+118	Child Protection & Rape Crisis	301 Miller St # 103, Santa Maria, CA 93454, United States	34.9505209	-120.4317856	ChIJnzZL64Bs7IARX3IeRiE37Ug	2016-06-03 18:25:30.100826	2016-06-03 18:25:30.100826
+119	The Center for Hope and Healing, Inc.	144 Merrimack St #304, Lowell, MA 01852, United States	42.6454605	-71.3101826	ChIJK9zxRT-k44kRiIfMZ2vQi2A	2016-06-03 18:25:30.102861	2016-06-03 18:25:30.102861
+120	Turning Point	PO Box 866754, Plano, TX 75086, United States	33.02	-96.7	ChIJVdSjnxsZTIYRym2SA8ZMipU	2016-06-03 18:25:30.104978	2016-06-03 18:25:30.104978
+121	Dallas Area Rape Crisis Center	8198 Walnut Hill Ln, Dallas, TX 75231, United States	32.8800172	-96.7641223	ChIJyRFcYlAfTIYRM3LHzhcQ6fs	2016-06-03 18:25:30.870857	2016-06-03 18:25:30.870857
+122	Rape Crisis & Referral Center	375 S 3rd St, San Jose, CA 95112, United States	37.3314888	-121.8845554	ChIJV7oX_LnMj4AR9TPNXDX0EHo	2016-06-03 18:25:31.709254	2016-06-03 18:25:31.709254
+123	Texas Association Against Sexual Assault	6200 La Calma Dr # 110, Austin, TX 78752, United States	30.3236534	-97.7034046	ChIJVcEHUx_KRIYR0Xag2Yj4jRM	2016-06-03 18:25:32.451861	2016-06-03 18:25:32.451861
+124	Women's Center of Jacksonville	5644 Colcord Ave, Jacksonville, FL 32211, United States	30.326385	-81.6037739	ChIJ7x1B45-25YgRHcSCKMYjxC4	2016-06-03 18:25:33.267313	2016-06-03 18:25:33.267313
+125	Rape Crisis Hotline	5644 Colcord Ave, Jacksonville, FL 32211, United States	30.3264106	-81.6037784	ChIJ7x1B45-25YgRr9MmnuTYmv8	2016-06-03 18:25:33.270718	2016-06-03 18:25:33.270718
+126	Rape Crisis Center	1841 Market St, San Francisco, CA 94103, United States	37.770971	-122.424237	ChIJHWreAaCAhYARiGWGkCQ_m0U	2016-06-03 18:25:33.905044	2016-06-03 18:25:33.905044
+127	S F Women Against Rape	3543 18th St #7, San Francisco, CA 94110, United States	37.7613718	-122.4225598	ChIJ6Z-syiJ-j4AReSXeTsrFDZo	2016-06-03 18:25:33.908043	2016-06-03 18:25:33.908043
+128	Rape Treatment Center	2727 Mariposa St # 100, San Francisco, CA 94110, United States	37.7628783	-122.4103893	ChIJKRaQ-DB-j4ARgEwlHi7uICM	2016-06-03 18:25:33.91044	2016-06-03 18:25:33.91044
+129	Bay Area Women Against Rape	470 27th St, Oakland, CA 94612, United States	37.8164725	-122.2665193	ChIJ95dTIauAj4ARj4yrvP6-WpM	2016-06-03 18:25:33.912542	2016-06-03 18:25:33.912542
+130	Rape Trauma Services of San Mateo	1860 El Camino Real # 301, Burlingame, CA 94010, United States	37.5963061	-122.384258	ChIJ6aYOB7R3j4AReFutdAMPvG0	2016-06-03 18:25:33.917045	2016-06-03 18:25:33.917045
+131	Rape Trauma Services	1860 El Camino Real #406, Burlingame, CA 94010, United States	37.59631	-122.384434	ChIJQT-i-bN3j4ARVzpft-tvXFI	2016-06-03 18:25:33.91948	2016-06-03 18:25:33.91948
+132	Center of Hope at St. Francis Hospital	8111 S Emerson Ave, Indianapolis, IN 46237, United States	39.6484238	-86.0800603	ChIJpVS2FEdDa4gRZzXe4pbrAYI	2016-06-03 18:25:34.73173	2016-06-03 18:25:34.73173
+133	Sexual Assault Response Network	1299 Olentangy River Rd, Columbus, OH 43212, United States	39.9863169	-83.0254846	ChIJkeiQrPqOOIgRhWpo8Bibc2Q	2016-06-03 18:25:35.465809	2016-06-03 18:25:35.465809
+134	The Women's Center	1723 Hemphill St, Fort Worth, TX 76110, United States	32.7243182	-97.3312214	ChIJyxCfQJ9xToYRlW-c34PRySo	2016-06-03 18:25:36.325214	2016-06-03 18:25:36.325214
+135	Rape Crisis & Victim Services	1723 Hemphill St, Fort Worth, TX 76110, United States	32.724416	-97.331108	ChIJyxCfQJ9xToYRzO__iESpXV4	2016-06-03 18:25:36.328987	2016-06-03 18:25:36.328987
+136	Women's Center-Tarrant County	401 W Sanford St # 1200, Arlington, TX 76011, United States	32.7432039	-97.1124441	ChIJU1DSx599ToYRirnoiRHU98k	2016-06-03 18:25:36.332048	2016-06-03 18:25:36.332048
+137	Dallas Area Rape Crisis Center	8198 Walnut Hill Ln, Dallas, TX 75231, United States	32.8800172	-96.7641223	ChIJyRFcYlAfTIYRM3LHzhcQ6fs	2016-06-03 18:25:36.334833	2016-06-03 18:25:36.334833
+138	Victim Intervention Program/Rape Crisis Center	5201 Harry Hines Blvd, Dallas, TX 75235, United States	32.8106657	-96.8382974	ChIJR5a906meToYRm8Pkprek-hU	2016-06-03 18:25:36.338694	2016-06-03 18:25:36.338694
+139	United Family Services: Rape Crisis Hotline	601 E 5th St, Charlotte, NC 28202, United States	35.2236029	-80.8363191	ChIJZREWXiGgVogRjuYrE4Y3dpA	2016-06-03 18:25:37.333466	2016-06-03 18:25:37.333466
+140	Rebuilding Hope, the Sexual Assault Center of Pierce County	101 E 26th St #200, Tacoma, WA 98421, United States	47.2383421	-122.433436	ChIJYZMcjntVkFQR3sW7AEVqspw	2016-06-03 18:25:37.917964	2016-06-03 18:25:37.917964
+141	Colorado Coalition Against Sexual Assault	1120 Lincoln St #700, Denver, CO 80203, United States	39.7345321	-104.9856934	ChIJC8LRjzJ5bIcRdlpRqvRIE0w	2016-06-03 18:25:38.647732	2016-06-03 18:25:38.647732
+142	Rape Crisis Hotline	Denver, CO 80206, United States	39.7271021	-104.9564084	ChIJUcfsmQF8bIcRKG7FqOZOyZU	2016-06-03 18:25:38.655325	2016-06-03 18:25:38.655325
+143	Stars	710 N Campbell St, El Paso, TX 79902, United States	31.7645999	-106.4880003	ChIJ54YO1_9Y54YRaikaHzHqJEM	2016-06-03 18:25:39.399806	2016-06-03 18:25:39.399806
+144	The Rape Crisis Center	7500 W US Hwy 90, San Antonio, TX 78227, United States	29.398463	-98.635997	ChIJG2jfH2pbXIYRXHiWsNXcEOc	2016-06-03 18:25:40.173018	2016-06-03 18:25:40.173018
+145	Boston Area Rape Crisis Center	99 Bishop Allen Dr, Cambridge, MA 02139, United States	42.3658537	-71.1020181	ChIJ4zlpwlN344kRc7JP-joc0bM	2016-06-03 18:25:40.17589	2016-06-03 18:25:40.17589
+146	Rape Victim Advocates	180 N Michigan Ave #600, Chicago, IL 60601, United States	41.88557	-87.624783	ChIJEcn5Xa8sDogRkAT8yrtXqY0	2016-06-03 18:25:40.179073	2016-06-03 18:25:40.179073
+147	D C Rape Crisis Center	5321 1st Pl NE, Washington, DC 20011, United States	38.9550885	-77.0040937	ChIJCyil7L63t4kRz5Y0DWFor3I	2016-06-03 18:25:40.741236	2016-06-03 18:25:40.741236
+148	Boston Area Rape Crisis Center	99 Bishop Allen Dr, Cambridge, MA 02139, United States	42.3658537	-71.1020181	ChIJ4zlpwlN344kRc7JP-joc0bM	2016-06-03 18:25:41.470759	2016-06-03 18:25:41.470759
+149	Shelby County Rape Crisis Center	1750 Madison Ave #102, Memphis, TN 38104, United States	35.1382581	-90.0027645	ChIJh4gbuot-1YcRMbqSDthfBZE	2016-06-03 18:25:42.16263	2016-06-03 18:25:42.16263
+150	Sexual Assault Center	101 French Landing Dr, Nashville, TN 37228, United States	36.1890738	-86.7963501	ChIJoSAtuBBnZIgRJqXIPK73LGk	2016-06-03 18:25:42.734223	2016-06-03 18:25:42.734223
+151	The Rape Crisis Center	7500 W US Hwy 90, San Antonio, TX 78227, United States	29.398463	-98.635997	ChIJG2jfH2pbXIYRXHiWsNXcEOc	2016-06-03 18:25:43.508701	2016-06-03 18:25:43.508701
+152	Rape Recovery Center	2035 1300 E, Salt Lake City, UT 84105, United States	40.7263522	-111.8535159	ChIJHVwlhB5gUocRCf6cNzWNSBM	2016-06-03 18:25:43.511793	2016-06-03 18:25:43.511793
+153	Rape Victim Advocates	180 N Michigan Ave #600, Chicago, IL 60601, United States	41.88557	-87.624783	ChIJEcn5Xa8sDogRkAT8yrtXqY0	2016-06-03 18:25:43.514461	2016-06-03 18:25:43.514461
+154	Union County Rape Crisis Center	300 N Ave E, Westfield, NJ 07090, United States	40.6506893	-74.3428176	ChIJz7wa8qaxw4kRVBPhm8zgno0	2016-06-03 18:25:43.51702	2016-06-03 18:25:43.51702
+155	Sexual Assault Resource Center	PO Box 3082, Bryan, TX 77805, United States	30.671701	-96.3438274	ChIJRw9qUgR-RoYRdd2TsY2AGeA	2016-06-03 18:25:43.521359	2016-06-03 18:25:43.521359
+156	Rape Abuse Incest National Network	1220 L St NW #505, Washington, DC 20005, United States	38.90341	-77.0292053	ChIJ22qUaLe3t4kRpOLf-nU0GTo	2016-06-03 18:25:43.524253	2016-06-03 18:25:43.524253
+157	Sexual Assault Support Services: Crisis/Support Line	591 W 19th Ave, Eugene, OR 97401, United States	44.0391728	-123.1010611	ChIJQ7gDi1wewVQRIuWq3stjq3Q	2016-06-03 18:25:43.526684	2016-06-03 18:25:43.526684
+158	Rape Crisis Line	Oklahoma City, OK 73112, United States	35.5135639	-97.5788975	ChIJmfLOg3AasocR9dn5ID3UC6M	2016-06-03 18:25:44.306149	2016-06-03 18:25:44.306149
+159	Oklahoma Coalition Against Domestic Violence and Sexual Assault	3815 N Santa Fe Ave, Oklahoma City, OK 73118, United States	35.5090283	-97.5124775	ChIJ-45CAeMZsocRuOQYLFffgq0	2016-06-03 18:25:44.309625	2016-06-03 18:25:44.309625
+160	Rape Crisis Center	801 S Rancho Dr #2, Las Vegas, NV 89106, United States	36.1621507	-115.1722555	ChIJ859dnR7ByIARDdKmA-DQaac	2016-06-03 18:25:44.933594	2016-06-03 18:25:44.933594
+161	Bluegrass Rape Crisis Center	PO Box 354, Danville, KY 40423, United States	37.65	-84.77	ChIJQee8moCQQogRoAdox95Edg0	2016-06-03 18:25:46.438428	2016-06-03 18:25:46.438428
+162	Rape Crisis Center	222 E Main St, Georgetown, KY 40324, United States	38.2096779	-84.5575409	ChIJl39_bXM_QogRNKoMvWiFxrE	2016-06-03 18:25:46.44189	2016-06-03 18:25:46.44189
+163	The Healing Center	130 W Bruce St #400, Milwaukee, WI 53204, United States	43.0253631	-87.9121418	ChIJbU36eJQZBYgRsUBRqsBCFjA	2016-06-03 18:25:47.166249	2016-06-03 18:25:47.166249
+164	Sexual Assault Treatment Center	945 north 12 st, Milwaukee, WI 53233, United States	43.0423826	-87.9280042	ChIJh_zcAvYPBYgR8uNZxDSMFzk	2016-06-03 18:25:47.170018	2016-06-03 18:25:47.170018
+165	Rape Crisis Center of Central Nm	9741 Candelaria Rd NE, Albuquerque, NM 87112, United States	35.1173681	-106.5307911	ChIJlWKQY_-fGIcRvloEYaavSZU	2016-06-03 18:25:47.916721	2016-06-03 18:25:47.916721
+166	Rape Crisis Services	1600 N Country Club Rd, Tucson, AZ 85716, United States	32.241772	-110.926154	ChIJOQ3f_Mdx1oYRas97cyiTn9c	2016-06-03 18:25:48.699612	2016-06-03 18:25:48.699612
+167	Rape Counseling Services of Fresno	259 N Blackstone Ave, Fresno, CA 93701, United States	36.7462855	-119.7908756	ChIJyV6_bahglIARznd__PtLAfg	2016-06-03 18:25:49.565823	2016-06-03 18:25:49.565823
+168	California Coalition Against Sexual Assault (CALCASA)	1215 K St #1850, Sacramento, CA 95814, United States	38.578475	-121.489886	ChIJWfgCutfQmoARTl_Sk8hNFA0	2016-06-03 18:25:50.401303	2016-06-03 18:25:50.401303
+169	MOCSA	3100 Broadway St # 400, Kansas City, MO 64111, United States	39.07067	-94.590633	ChIJl5X1yiPwwIcRvgtPyL6ayLM	2016-06-03 18:25:51.160269	2016-06-03 18:25:51.160269
+170	Rape Crisis Line	3217 Broadway St # 500, Kansas City, MO 64111, United States	39.068639	-94.5895851	ChIJWYhxvibwwIcRqepqEjT9IVE	2016-06-03 18:25:51.164252	2016-06-03 18:25:51.164252
+171	Sexual Assault Crisis Program	1600 E Compton Blvd, Compton, CA 90221, United States	33.8958157	-118.205471	ChIJvQ_KLp7MwoARqRgyMXM4lkQ	2016-06-03 18:25:51.946335	2016-06-03 18:25:51.946335
+172	Rape Crisis Services	1600 N Country Club Rd, Tucson, AZ 85716, United States	32.241772	-110.926154	ChIJOQ3f_Mdx1oYRas97cyiTn9c	2016-06-03 18:25:52.738718	2016-06-03 18:25:52.738718
+173	Rape Crisis Center	80 Jesse Hill Jr Dr SE, Atlanta, GA 30303, United States	33.7518461	-84.3818556	ChIJ5S3-zY4D9YgRvobQI6xhYto	2016-06-03 18:25:53.462815	2016-06-03 18:25:53.462815
+174	Pueblo Rape Crisis Services	503 N Main St #526, Pueblo, CO 81003, United States	38.271863	-104.608786	ChIJ-xzrfQGjE4cRWR4u_fmQCwE	2016-06-03 18:25:54.277893	2016-06-03 18:25:54.277893
+175	Pueblo Rape Crisis Services	301 W 13th St, Pueblo, CO 81003, United States	38.279209	-104.610542	ChIJO99O4KqjE4cRY5M3gKyEV4c	2016-06-03 18:25:54.281662	2016-06-03 18:25:54.281662
+176	Rape Crisis Counseling	5215 Colley Ave, Norfolk, VA 23508, United States	36.89053	-76.295766	ChIJvVWRQLaZuokRKqabQBvXFXw	2016-06-03 18:25:55.017471	2016-06-03 18:25:55.017471
+177	InterAct	1012 Oberlin Rd, Raleigh, NC 27605, United States	35.7967286	-78.6599652	ChIJW4z-jvb1rIkRjXP41alhndE	2016-06-03 18:25:55.736147	2016-06-03 18:25:55.736147
+178	Roxcy Bolton Rape Treatment Center	1611 NW 12th Ave, Miami, FL 33136, United States	25.7917071	-80.2127479	ChIJ4Ujpsse22YgRvD2emtYhYyA	2016-06-03 18:25:57.187052	2016-06-03 18:25:57.187052
+179	Bay Area Women Against Rape	470 27th St, Oakland, CA 94612, United States	37.8164725	-122.2665193	ChIJ95dTIauAj4ARj4yrvP6-WpM	2016-06-03 18:25:58.000215	2016-06-03 18:25:58.000215
+180	Rape Crisis Center	1841 Market St, San Francisco, CA 94103, United States	37.770971	-122.424237	ChIJHWreAaCAhYARiGWGkCQ_m0U	2016-06-03 18:25:58.003826	2016-06-03 18:25:58.003826
+181	S F Women Against Rape	3543 18th St #7, San Francisco, CA 94110, United States	37.7613718	-122.4225598	ChIJ6Z-syiJ-j4AReSXeTsrFDZo	2016-06-03 18:25:58.006504	2016-06-03 18:25:58.006504
+182	Rape Treatment Center	2727 Mariposa St # 100, San Francisco, CA 94110, United States	37.7628783	-122.4103893	ChIJKRaQ-DB-j4ARgEwlHi7uICM	2016-06-03 18:25:58.008826	2016-06-03 18:25:58.008826
+183	N.I.P. Rape & Sexual Abuse Center	2431 Hennepin Ave, Minneapolis, MN 55405, United States	44.9580024	-93.294649	ChIJDbYZsNYys1IRlOossEH391k	2016-06-03 18:25:58.728935	2016-06-03 18:25:58.728935
+184	Domestic Violence Intervention Services, Inc.	4300 S Harvard Ave # 100, Tulsa, OK 74135, United States	36.102079	-95.940661	ChIJsUVxhNiStocRw6WeRfy7CNA	2016-06-03 18:25:59.442515	2016-06-03 18:25:59.442515
+185	Wichita Area Sexual Assault Center	355 N Waco Ave # 100, Wichita, KS 67202, United States	37.6912092	-97.3425449	ChIJrZFin9zjuocR253g3x08b9M	2016-06-03 18:26:00.204897	2016-06-03 18:26:00.204897
+186	The Louisiana Foundation Against Sexual Assault	11832 Newcastle Ave #9, Baton Rouge, LA 70816, United States	30.4196639	-91.0492549	ChIJV0t82s8iJ4YRd7nP6DMdx34	2016-06-03 18:26:00.967985	2016-06-03 18:26:00.967985
+187	Women's Center-Tarrant County	401 W Sanford St # 1200, Arlington, TX 76011, United States	32.7432039	-97.1124441	ChIJU1DSx599ToYRirnoiRHU98k	2016-06-03 18:26:01.698701	2016-06-03 18:26:01.698701
+188	Cleveland Rape Crisis Center	1228 Euclid Ave #200, Cleveland, OH 44115, United States	41.5002762	-81.6839155	ChIJKV4ajn36MIgRByEmCm7rKqc	2016-06-03 18:26:02.482401	2016-06-03 18:26:02.482401
+189	California Coalition Against Sexual Assault (CALCASA)	1215 K St #1850, Sacramento, CA 95814, United States	38.578475	-121.489886	ChIJWfgCutfQmoARTl_Sk8hNFA0	2016-06-03 18:26:03.297727	2016-06-03 18:26:03.297727
+190	Rape Crisis	2188 58th St N, Clearwater, FL 33760, United States	27.9175851	-82.7140792	ChIJFxHI2l_lwogRIPCd-6CfDyc	2016-06-03 18:26:04.104036	2016-06-03 18:26:04.104036
+191	Colorado Coalition Against Sexual Assault	1120 Lincoln St #700, Denver, CO 80203, United States	39.7345321	-104.9856934	ChIJC8LRjzJ5bIcRdlpRqvRIE0w	2016-06-03 18:26:04.829376	2016-06-03 18:26:04.829376
+192	Rape Crisis Hotline	Denver, CO 80206, United States	39.7271021	-104.9564084	ChIJUcfsmQF8bIcRKG7FqOZOyZU	2016-06-03 18:26:04.833024	2016-06-03 18:26:04.833024
+193	Sex Abuse Treatment Center	55 Merchant St # 22, Honolulu, HI 96813, United States	21.3090952	-157.8636106	ChIJkaX2ZXNuAHwRDvk5DThszbY	2016-06-03 18:26:05.629608	2016-06-03 18:26:05.629608
+194	Sexual Assault Victim Services	700 W Civic Center Dr, Santa Ana, CA 92701, United States	33.7510317	-117.8753841	ChIJCSJJrKvZ3IAR6_VrtkUBPfo	2016-06-03 18:26:06.380603	2016-06-03 18:26:06.380603
+195	Rape Crisis Hotline	Santa Ana, CA 92705, United States	33.7455731	-117.8678338	ChIJW8QbRwjZ3IAR_Wrpt_RvaWM	2016-06-03 18:26:07.207454	2016-06-03 18:26:07.207454
+196	Sexual Assault Victim Services	700 W Civic Center Dr, Santa Ana, CA 92701, United States	33.7510317	-117.8753841	ChIJCSJJrKvZ3IAR6_VrtkUBPfo	2016-06-03 18:26:07.210234	2016-06-03 18:26:07.210234
+197	The Rape Crisis Center	7500 W US Hwy 90, San Antonio, TX 78227, United States	29.398463	-98.635997	ChIJG2jfH2pbXIYRXHiWsNXcEOc	2016-06-03 18:26:08.018479	2016-06-03 18:26:08.018479
+198	Rape Crisis Center of Riverside	1845 Chicago Ave # A, Riverside, CA 92507, United States	33.9943271	-117.3502605	ChIJ8_g3vwiu3IARQhWyBGrNcVE	2016-06-03 18:26:08.785039	2016-06-03 18:26:08.785039
+199	Sexual Assault Center	3820 W Pine Blvd, St. Louis, MO 63108, United States	38.6365736	-90.240102	ChIJd5EsytQ034cRQ37MJSFFOSw	2016-06-03 18:26:09.588723	2016-06-03 18:26:09.588723
+200	Abuse and Rape Crisis Helpline for Adults and Teens	2165 Hampton Ave, St. Louis, MO 63139, United States	38.6160148	-90.2877563	ChIJ2STrKnG12IcRJ0IpsTwtX-8	2016-06-03 18:26:09.591985	2016-06-03 18:26:09.591985
+201	Sexual Assault Center	3820 West Pne, St. Louis, MO 63108, United States	38.6365736	-90.240102	ChIJjYsQzb602IcRJYfWpt1kdD4	2016-06-03 18:26:09.594618	2016-06-03 18:26:09.594618
+202	Sexual Assault Counseling	9400 Lebanon Rd, East St Louis, IL 62203, United States	38.5871629	-90.0478	ChIJpeqMNcar2IcRwZmNXHqTcas	2016-06-03 18:26:09.597574	2016-06-03 18:26:09.597574
+203	Taylor and Taylor P.C.	1115 Locust St, St. Louis, MO 63101, United States	38.6303161	-90.1959268	ChIJq1PnIxiz2IcR3nkOegOz0S8	2016-06-03 18:26:09.601426	2016-06-03 18:26:09.601426
+204	Bluegrass Rape Crisis Center	145 Constitution St, Lexington, KY 40588, United States	38.0477675	-84.492479	ChIJm0byQe1EQogRgZHnHpmiNX4	2016-06-03 18:26:10.362266	2016-06-03 18:26:10.362266
+205	Tri-Valley Haven	3663 Pacific Ave, Livermore, CA 94550, United States	37.6756948	-121.752945	ChIJ8YFjKGXnj4ARy3k0jffreYw	2016-06-03 18:26:11.157747	2016-06-03 18:26:11.157747
+206	Pittsburgh Action Against Rape	81 S 19th St, Pittsburgh, PA 15203, United States	40.4290246	-79.9788434	ChIJ5VLu7m7xNIgRVDnBhqhE8AA	2016-06-03 18:26:13.059317	2016-06-03 18:26:13.059317
+207	Minnesota Coalition Against	161 St Anthony Ave # 1001, St Paul, MN 55103, United States	44.9518547	-93.1070563	ChIJmyouY68q9ocRWGPpmLkVH8A	2016-06-03 18:26:13.869736	2016-06-03 18:26:13.869736
+208	Sexual Offense Services of Ramsey County	555 Cedar St, St Paul, MN 55101, United States	44.9506731	-93.0982135	ChIJxUM-MK0q9ocRlYiFO6LVepc	2016-06-03 18:26:13.872898	2016-06-03 18:26:13.872898
+209	Aurora Center for Advocacy and Education	128 Pleasant St SE, Minneapolis, MN 55455, United States	44.9749575	-93.2373294	ChIJZRvckj0ts1IRKqmsQ1pV0c0	2016-06-03 18:26:13.875456	2016-06-03 18:26:13.875456
+210	Star Rape Crisis	1057 W Fireweed Ln #230, Anchorage, AK 99503, United States	61.1992468	-149.9035649	ChIJq6qqqiaWyFYRR88uLHBTsis	2016-06-03 18:26:14.6125	2016-06-03 18:26:14.6125
+211	Battered Women 24 Hour Crisis	215 E 9th St, Cincinnati, OH 45202, United States	39.1056976	-84.5100434	ChIJN8qptFmxQYgRXyKSsfGHL4o	2016-06-03 18:26:15.552387	2016-06-03 18:26:15.552387
+212	Women's Crisis Center	835 Madison Ave, Covington, KY 41011, United States	39.0813284	-84.5098096	ChIJB29tMDqxQYgRmtDFrGDQ0lc	2016-06-03 18:26:15.556038	2016-06-03 18:26:15.556038
+213	Rape Crisis Center	801 S Rancho Dr #2, Las Vegas, NV 89106, United States	36.1621507	-115.1722555	ChIJ859dnR7ByIARDdKmA-DQaac	2016-06-03 18:26:16.535614	2016-06-03 18:26:16.535614
+214	Rape Crisis Center of Coastal Horiozon's Center, Inc.	609 Shipyard Blvd #106, Wilmington, NC 28412, United States	34.193147	-77.932301	ChIJy6Ydox4eqokR9m7TkSCfYXo	2016-06-03 18:26:18.093683	2016-06-03 18:26:18.093683
+215	Orange County Rape Crisis Center	1506 E Franklin St #302, Chapel Hill, NC 27514, United States	35.929967	-79.0326	ChIJAW1XrrPCrIkRn_I2aamXPzI	2016-06-03 18:26:18.097056	2016-06-03 18:26:18.097056
+216	Family Violence & Rape Crisis Services	200 East St, Pittsboro, NC 27312, United States	35.71978	-79.173889	ChIJpwqtYre5rIkRsT1WdO06R7w	2016-06-03 18:26:18.100121	2016-06-03 18:26:18.100121
+217	United Family Services: Rape Crisis Hotline	601 E 5th St, Charlotte, NC 28202, United States	35.2236029	-80.8363191	ChIJZREWXiGgVogRjuYrE4Y3dpA	2016-06-03 18:26:18.102349	2016-06-03 18:26:18.102349
+\.
+
+
+--
+-- Name: service_providers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: apprentice
+--
+
+SELECT pg_catalog.setval('service_providers_id_seq', 217, true);
+
+
+--
+-- Name: service_providers_pkey; Type: CONSTRAINT; Schema: public; Owner: apprentice; Tablespace:
+--
+
+ALTER TABLE ONLY service_providers
+    ADD CONSTRAINT service_providers_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: apprentice; Tablespace:
+--
+
+CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (version);
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: apprentice
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM apprentice;
+GRANT ALL ON SCHEMA public TO apprentice;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
+

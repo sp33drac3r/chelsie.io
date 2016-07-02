@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  flagger: MyString
+  flaggable_id: 1
+  flag_type: MyString
+
+two:
+  flagger: MyString
+  flaggable_id: 1
+  flag_type: MyString
