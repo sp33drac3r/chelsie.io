@@ -10,7 +10,7 @@ returns just services offered, by id
 **chelsie.io/centers/:id/populations_served**  
 returns just populations served, by id  
 **chelsie.io/centers/search/:query**  
-returns all crisis centers matching search query. Query string   should be formatted 'chelsie.io/centers/search/[key=value&key=value]'  
+returns all crisis centers matching search query. Query string should be formatted 'chelsie.io/centers/search/[key=value&key=value]'  
 **chelsie.io/centers/geo/:lat/:lng/:radius**  
 returns all crisis centers within a given radius based on nearness to a set of lat/lng coordinates.  
 
