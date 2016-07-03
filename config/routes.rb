@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   # Root
-  # root '/'
+  root to: 'application#index'
 
   get '/centers',                       to: 'centers#index'
   get '/centers/:id',                   to: 'centers#show'
